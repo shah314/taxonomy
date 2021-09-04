@@ -6,7 +6,7 @@ The original paper can be found <a href="https://research.google/pubs/pub42499/"
 
 The algorithm alternates between latent factor updates and taxonomy path sampling. The latent factors are used to generate recommendations.<br><br>
 Path sampling uses the latent factors and the genres of the movies in a Gibbs sampling procedure to generate new paths for movies.<br><br>
-The initial taxonomy is generated randomly and then movies are assigned to nodes randomly.<br><br>
+The initial taxonomy is generated randomly and then movies are assigned to nodes randomly. The Chinese restaurant process is not used.<br><br>
 As iterations progress, the taxonomy as well as the latent factors are updated using Gibbs sampling and gradient descent respectively.
 
 ### Results
