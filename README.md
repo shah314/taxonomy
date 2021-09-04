@@ -1,7 +1,7 @@
 # Taxonomy for Recommender Systems
 ### Shalin Shah
 
-An implementation of the Taxonomy Discovery for Personalized Recommendation. The code is written in python. 
+An implementation of the Taxonomy Discovery for Personalized Recommendation on the <a href="https://grouplens.org/datasets/movielens/" target="_blank">MovieLens</a> (small) dataset. The code is written in python.
 The original paper can be found <a href="https://research.google/pubs/pub42499/" target="_blank">here</a>.
 
 The algorithm alternates between latent factor updates and taxonomy path sampling. The latent factors are used to generate recommendations.<br><br>
