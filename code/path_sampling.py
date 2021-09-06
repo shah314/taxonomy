@@ -42,7 +42,7 @@ def sample_paths(categories, movies, genres):
             
             totalprob = 0
             if (c in cg.keys()) & (gprob > 0) & (facprob > 0):
-                totalprob = facprob * gprob
+                totalprob = facprob + gprob
             elif facprob > 0:
                 totalprob = facprob
             
@@ -80,7 +80,7 @@ def sample_paths(categories, movies, genres):
             
             totalprob = 0
             if (c in cg.keys()) & (gprob > 0) & (facprob > 0):
-                totalprob = facprob * gprob
+                totalprob = facprob + gprob
             elif facprob > 0:
                 totalprob = facprob
             
@@ -118,7 +118,7 @@ def sample_paths(categories, movies, genres):
             
             totalprob = 0
             if (c in cg.keys()) & (gprob > 0) & (facprob > 0):
-                totalprob = facprob * gprob
+                totalprob = facprob + gprob
             elif facprob > 0:
                 totalprob = facprob
             
@@ -140,7 +140,45 @@ def sample_paths(categories, movies, genres):
         else:
             newpath.append(oldpath[3])
             chosenchild = oldpath[3]
-   
+
+        children = categories[chosenchild].children
+        chosenchild = -1
+        probs = dict()
+        for c in children:
+            cfac = categories[c].factor
+            if c in cg.keys():
+                cgenres = cg[c]
+            
+            gprob = 0
+            facprob = multivariate_normal.pdf(mfactor, cfac, cov_mtx())
+            if c in cg.keys():
+                gprob = genres_probability(cgenres, mg)
+            
+            totalprob = 0
+            if (c in cg.keys()) & (gprob > 0) & (facprob > 0):
+                totalprob = facprob + gprob
+            elif facprob > 0:
+                totalprob = facprob
+            
+            probs[c] = totalprob
+    
+        useold = True
+        for c in probs:
+            if probs[c] != 0:
+                useold = False
+                break
+    
+        if useold == False:
+            p1 = list(probs.values())
+            s = sum(p1)
+            p1 = p1 / s
+            chosenchild = np.random.choice(list(probs.keys()), 1, p=p1)[0]
+            #chosenchild = list(probs.keys())[chosenindex]
+            newpath.append(chosenchild)
+        else:
+            newpath.append(oldpath[4])
+            chosenchild = oldpath[4]    
+
         #print(oldpath)
         #print(newpath)
 

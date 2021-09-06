@@ -96,18 +96,28 @@ def assign_random_paths(items, root, categories):
     for i in items.keys():
         item = items[i]
         path = list()
+        
         path.append(root.id)
+        
         c = list(root.children)
         rand = int(rng.uniform() * len(c))
         nextcat = c[rand]
         path.append(nextcat)
+        
         cattwo = categories[nextcat]
         c = list(cattwo.children)
         rand = int(rng.uniform() * len(c))
         nextcat = c[rand]
         path.append(nextcat)
+        
         catthree = categories[nextcat]
         c = list(catthree.children)
+        rand = int(rng.uniform() * len(c))
+        nextcat = c[rand]
+        path.append(nextcat)
+        
+        catfour = categories[nextcat]
+        c = list(catfour.children)
         rand = int(rng.uniform() * len(c))
         nextcat = c[rand]
         path.append(nextcat)
