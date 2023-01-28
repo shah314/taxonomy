@@ -12,4 +12,4 @@ As iterations progress, the taxonomy as well as the latent factors are updated u
 ### Results
 Random initialization hit rate@10:<br><b>3%</b><br><br>
 Hit rate@10 after 10 iterations:<br><b>48%</b><br><br>
-A random sample of 10% of the movies are taken for the hit rate calculation (as negative sampling).
+A random sample of 10% of the movies are taken for the hit rate calculation.
